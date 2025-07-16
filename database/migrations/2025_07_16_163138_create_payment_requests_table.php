@@ -15,10 +15,11 @@ return new class extends Migration
             $table->id();
             $table->foreignUuid('user_id')->references('id')->on("users")->cascadeOnDelete();
             $table->string("expenditure_category_id", 100);
+            $table->enum("status", ["C", "R", "P"])->default("P");
             $table->string("shaba");
             $table->unsignedInteger("amount");
             $table->string("file")->nullable();
-            $table->text("description");
+            $table->json("description");
             $table->timestamps();
 
             $table->foreign(["expenditure_category_id"])->references('id')->on('expenditure_categories');
