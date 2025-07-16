@@ -1,0 +1,37 @@
+// paste this in https://dbdiagram.io/d
+
+Enum payment_requests.status{
+  C // Confirmed
+  R // Rejected
+  P // Pending
+}
+
+Table users as U{
+  id char(36) [pk]
+  name varchar(255)
+  email varchar(255) [unique]
+  phone char(11) [unique]
+  national_code char(10) [unique]
+  password varchar(255)
+  remember_token varchar(100) [null]
+  created_at timestamp [null]
+  updated_at timestamp [null]
+}
+
+Table expenditure_categories as EC{
+  id varchar(100) [pk]
+  name varchar(255)
+}
+
+Table payment_requests as PR{
+  id bigint [pk]
+  user_id char(36) [ref: > U.id]
+  expenditure_category_id varchar(100) [ref: > EC.id]
+  status payment_requests.status [default: 'P']
+  shaba varchar(255)
+  amount unsigned_int
+  file varchar [null]
+  description json [null]
+  created_at timestamp [null]
+  updated_at timestamp [null]
+}
