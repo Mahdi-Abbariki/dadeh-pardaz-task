@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string("shaba");
             $table->unsignedInteger("amount");
             $table->string("file")->nullable();
-            $table->json("description");
+            $table->json("description")->nullable();
             $table->timestamps();
 
             $table->foreign(["expenditure_category_id"])->references('id')->on('expenditure_categories');

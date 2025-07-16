@@ -27,7 +27,7 @@ class PhoneNumberCast implements CastsAttributes
      */
     public function set(Model $model, string $key, mixed $value, array $attributes): mixed
     {
-        throw_unless(is_scalar($value), throw new InvalidArgumentException('Phone number must be a string or number.'));
+        throw_unless(is_scalar($value), new InvalidArgumentException('Phone number must be a string or number.'));
 
         // Remove any non-digit characters
         $digits = preg_replace('/\D/', '', $value);

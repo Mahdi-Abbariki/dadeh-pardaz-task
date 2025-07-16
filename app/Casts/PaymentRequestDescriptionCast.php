@@ -27,7 +27,7 @@ class PaymentRequestDescriptionCast implements CastsAttributes
     public function set(Model $model, string $key, mixed $value, array $attributes): mixed
     {
         if ($value instanceof PaymentRequestDescription) {
-            return json_encode($value->toArray(), flags: JSON_UNESCAPED_UNICODE);
+            return $value->hasDescription() ? json_encode($value->toArray(), flags: JSON_UNESCAPED_UNICODE) : null;
         }
 
         throw new InvalidArgumentException('The given value is not a PaymentRequestDescription instance.');

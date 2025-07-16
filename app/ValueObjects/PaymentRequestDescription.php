@@ -44,4 +44,9 @@ class PaymentRequestDescription
             'adminRejectDescription' => $this->adminRejectDescription,
         ];
     }
+
+    public function hasDescription(): bool
+    {
+        return !empty($this->userDescription) || !empty($this->adminRejectDescription);
+    }
 }

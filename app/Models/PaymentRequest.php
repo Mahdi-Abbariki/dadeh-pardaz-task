@@ -9,6 +9,17 @@ use App\Enums\PaymentRequestStatusEnum;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
+/**
+ * @property int $id
+ * @property string $user_id
+ * @property string $expenditure_category_id
+ * @property string $shaba
+ * @property int $amount
+ * @property string|null $file
+ * @property \App\ValueObjects\PaymentRequestDescription|null $description
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ */
 class PaymentRequest extends Model
 {
     /**
