@@ -17,7 +17,12 @@
 <body>
     <div class="container mt-5">
         <h2>فرم ثبت درخواست پرداخت</h2>
-        <form method="POST" action="{{ route("user.paymentRequest.store") }}" id="contactForm" class="row">
+        @session('store-success')
+            <div class="alert alert-success" role="alert">
+                {{ $value }}
+            </div>
+        @endsession
+        <form method="POST" enctype='multipart/form-data' action="{{ route("user.paymentRequest.store") }}" id="contactForm" class="row">
             @csrf
             <div class="mb-3 col-6">
                 <label for="nationalCodeInput" class="form-label">کد ملی</label>

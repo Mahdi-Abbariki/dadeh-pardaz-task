@@ -6,6 +6,7 @@ namespace App\Models;
 
 use App\Casts\PaymentRequestDescriptionCast;
 use App\Enums\PaymentRequestStatusEnum;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
@@ -22,6 +23,14 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  */
 class PaymentRequest extends Model
 {
+
+    /**
+     * The accessors to append to the model's array form.
+     *
+     * @var array
+     */
+    protected $appends = ['file_path'];
+
     /**
      * Get the attributes that should be cast.
      *
@@ -33,6 +42,15 @@ class PaymentRequest extends Model
             'status' => PaymentRequestStatusEnum::class,
             "description" => PaymentRequestDescriptionCast::class
         ];
+    }
+
+    public function filePath(): Attribute
+    {
+        return Attribute::make(
+            get: fn(mixed $value, array $attributes) => "uploads" . DIRECTORY_SEPARATOR .
+                "payment_requests" . DIRECTORY_SEPARATOR .
+                $attributes['file'],
+        );
     }
 
     // ========================= Relationships =========================

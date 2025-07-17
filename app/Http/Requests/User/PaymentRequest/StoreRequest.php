@@ -19,7 +19,7 @@ class StoreRequest extends FormRequest
             "expenditureCategory" => "required|exists:expenditure_categories,id",
             "nationalCode" => "required|exists:users,national_code",
             "shaba" => ["required", $shabaRule],
-            "amount" => "required|numeric|min:1",
+            "amount" => "required|numeric|min:1|max:4294967295",
             "description" => "nullable|max:1000",
             "attachment" => [
                 "nullable",
