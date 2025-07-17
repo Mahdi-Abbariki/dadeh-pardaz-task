@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\User\PaymentRequest;
 
+use App\Rules\ShabaNumberValidRule;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rules\File;
 
@@ -12,12 +13,12 @@ class StoreRequest extends FormRequest
      *
      * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
      */
-    public function rules(): array
+    public function rules(ShabaNumberValidRule $shabaRule): array
     {
         return [
             "expenditureCategory" => "required|exists:expenditure_categories,id",
             "nationalCode" => "required|exists:users,national_code",
-            "shaba" => "required",
+            "shaba" => ["required", $shabaRule],
             "amount" => "required|numeric|min:1",
             "description" => "nullable|max:1000",
             "attachment" => [
