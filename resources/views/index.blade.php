@@ -30,7 +30,7 @@
 <body>
     <div class="container">
         <h2>به سیستم خوش آمدید</h2>
-        <a href="{{ route("user.paymentRequest.store") }}" class="btn btn-primary">فرم ثبت درخواست پرداخت</a>
+        <a href="{{ route("user.paymentRequest.create") }}" class="btn btn-primary">فرم ثبت درخواست پرداخت</a>
         <a href="{{ route("admin.paymentRequest.index") }}" class="btn btn-warning">مدیریت کاربران</a>
     </div>
     <!-- Bootstrap JS and Popper.js CDN (5.3.7) -->
